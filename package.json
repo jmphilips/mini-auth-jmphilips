@@ -1,0 +1,27 @@
+{
+  "name": "mini-auth-jmphilips",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmphilips/mini-auth-jmphilips.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmphilips/mini-auth-jmphilips/issues"
+  },
+  "homepage": "https://github.com/jmphilips/mini-auth-jmphilips#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "connect-redis": "^3.1.0",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "mongoose": "^4.6.1"
+  }
+}
