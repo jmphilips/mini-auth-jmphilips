@@ -1,0 +1,12 @@
+html 
+    head
+        title register
+    body 
+        .register-form
+            form(method='POST')
+                label(for='email') Email Address
+                input(type='email' name='email' placeholder='you@example.com' required)
+                label(for='password') Password
+                input(type='password' name='password' placeholder='**********************' required)
+                a.btn.btn-danger.btn-lg(href='/') Cancel
+                input(type='submit' value='register')
