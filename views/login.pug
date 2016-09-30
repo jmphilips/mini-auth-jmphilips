@@ -1,0 +1,15 @@
+html 
+    head
+        title login
+    body 
+        .register-form
+            form(method='POST')
+                .form-group
+                    label(for='email') Email Address
+                    input.form-control#email(type='email' name='email' placeholder='you@example.com' required)
+                .form-group
+                    label(for='password') Password
+                    input.form-control#password(type='password' name='password' placeholder='**********************' required)
+                .register-form__submit
+                    a.btn.btn-danger.btn-lg(href='/') Cancel
+                    input(type='submit' value='register')
