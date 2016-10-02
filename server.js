@@ -41,6 +41,19 @@ app.get('/login', (req, res) => {
     res.render('login');
 })
 
+app.post('/login', ( {session, body: { email, password }}, res, err) => {
+
+    Users.findOne({ email })
+        .then(user => {
+            if ( user && password === user.password ) {
+                session.user = user;
+                res.render('home')
+            } else {
+                res.render('login')
+            }
+        })
+})
+
 app.get('/register', (req, res) => {
     res.render('register');
 })
