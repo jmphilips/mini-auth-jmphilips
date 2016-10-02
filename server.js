@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
     res.render('login');
-})
+});
 
 app.post('/login', ( {session, body: { email, password }}, res, err) => {
 
@@ -51,12 +51,12 @@ app.post('/login', ( {session, body: { email, password }}, res, err) => {
             } else {
                 res.render('login')
             }
-        })
-})
+        });
+});
 
 app.get('/register', (req, res) => {
     res.render('register');
-})
+});
 
 app.post('/register', (req, res, err) => {
     console.log(req.body)
@@ -65,11 +65,15 @@ app.post('/register', (req, res, err) => {
         .create(req.body)
         .then(() => res.render('login'))
         .catch(err)
-})
+});
 
 app.get('/home', (req, res) => {
     res.render('home');
-})
+});
+
+
+
+
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URL, () => {
