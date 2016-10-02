@@ -72,7 +72,10 @@ app.get('/home', (req, res) => {
 });
 
 
-
+app.get('/logout',(req,res)=>{
+	req.session.destroy();
+	res.redirect('/')
+})
 
 
 mongoose.Promise = Promise;
