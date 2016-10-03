@@ -18,7 +18,7 @@ const Users = require('./models/user');
 app.set('view engine', 'pug')
 
 app.use(express.static('views'));
-app.use(express.static('lib'))
+
 app.use(session({
     store: new RedisStore({url: process.env.REDIS_URL}  || 'redis://localhost:6379'),
     resave: false,
@@ -38,18 +38,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', {message: "Please log in"});
 });
 
 app.post('/login', ( {session, body: { email, password }}, res, err) => {
-
     Users.findOne({ email })
         .then(user => {
             if ( user && password === user.password ) {
                 session.user = user;
-                res.render('home')
+                res.render('home', { message: `Welcome ${session.user.email}` } )
             } else {
-                res.render('login')
+                res.render('login', { message: `Sorry, incorrect password :(`} )
             }
         });
 });
@@ -59,7 +58,6 @@ app.get('/register', (req, res) => {
 });
 
 app.post('/register', (req, res, err) => {
-    console.log(req.body)
 
     Users
         .create(req.body)
@@ -71,12 +69,10 @@ app.get('/home', (req, res) => {
     res.render('home');
 });
 
-
 app.get('/logout',(req,res)=>{
 	req.session.destroy();
 	res.redirect('/')
 })
-
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URL, () => {
